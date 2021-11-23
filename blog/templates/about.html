@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main %}
+<h1 class="center">About Tech Talk</h1>
+<section class="about-page-founders">
+    <h4 class="center">Our Founders:</h4>
+    <div class="row">
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-image">
+                        <img src="{% static 'images/polina-photo.png' %}" alt="" height="400px" class="responsive-img">
+                        <span class="card-title">
+                            Polina Gorbunova
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-image">    
+                        <img src="{% static 'images/alba-photo.png' %}" alt="" height="400px" class="responsive-img">                    
+                        <span class="card-title">
+                            Alba Molina
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-image">
+                        <img src="{% static 'images/keara-photo.png' %}" alt="" height="400px" class="responsive-img">
+                        <span class="card-title">
+                            Keara Pereira
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
+
