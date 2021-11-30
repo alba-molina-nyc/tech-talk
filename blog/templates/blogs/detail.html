@@ -8,6 +8,7 @@
         <div class="card blue-green darken-1 white purple-border z-depth-3">
 
             <div class="card-content black-text">
+                {% if user_id == author_id %}
                 <div class="card-action">
                     <a class="waves-effect purple waves-light btn right"
                         href="{% url 'blog_urls:blog_update' blog.id %}"><i class="material-icons left"></i>Edit
@@ -17,7 +18,8 @@
                         Blog</a>
                     
                 </div>
-
+                {% endif %}
+                <img src="{{ blog.image_url }}"/>
                 <div class="card-action">
                     <span class="card-title">{{blog.title}}</span>
                     <p>I am a very simple card. I am good at containing small bits of information.
@@ -26,25 +28,28 @@
             </div>
             <div class="card-action">
                 <span>{{blog.likes}}</span>
-                <a class="waves-effect purple waves-light btn"><i class="material-icons left"></i>Comments</a>
+                <a class="waves-effect purple waves-light btn comment_button"><i class="material-icons left"></i>Comments</a>
             </div>
         </div>
     </div>
 </div>
-<form action="{% url 'blog_urls:add_comment' blog.id %}" method = "post">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <input type="submit" value = "Add a Comment" class = "btn purple">
 
-</form>
-{% for comment in blog.comment_set.all %}
-<div class = "card">
-    <div class = "card-content">
-       {{ comment.comment_text }}
-    </div>
-    <div class = "card-action">
-        <a href="{% url 'blog_urls:edit_comment' comment.id %}">Edit Comment</a>
-        <a href="{% url 'blog_urls:delete_comment' blog.id comment.id %}">Delete</a>
+<div class="comment_section hidden">
+    <form action="{% url 'blog_urls:add_comment' blog.id %}" method = "post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <input type="submit" value = "Add a Comment" class = "btn purple">
+    
+    </form>
+    {% for comment in blog.comment_set.all %}
+    <div class = "card">
+        <div class = "card-content">
+        {{ comment.comment_text }}
+        </div>
+        <div class = "card-action">
+            <a href="{% url 'blog_urls:edit_comment' comment.id %}">Edit Comment</a>
+            <a href="{% url 'blog_urls:delete_comment' blog.id comment.id %}">Delete</a>
+        </div>
     </div>
 </div>
 
@@ -67,6 +72,22 @@
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
+</script>
+<script>
+    const $comments = $('.comment_section');
+    const $commentButton = $('.comment_button') 
+    console.log($comments);
+    console.log($commentButton);
+
+    $commentButton.click(
+        function () {
+            if ($comments.hasClass('hidden')) {
+                $comments.removeClass('hidden');
+            } else {
+                $comments.addClass('hidden');
+            }
+        }
+    );
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 {% endblock %}

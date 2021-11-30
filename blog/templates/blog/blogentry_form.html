@@ -4,9 +4,16 @@
 <h1 class="center">New Blog Post</h1>
 
 <div class="container">
-    <form action="" method="post">
+    <form 
+        action="" 
+        class="card-panel" 
+        action="" 
+        method="post" 
+        enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        <label for = "image">Upload Image</label>
+        <input type="file" name="photo-file" id="image">
         <input type="submit" class="btn purple" value="Create Post">
     </form>
 </div>

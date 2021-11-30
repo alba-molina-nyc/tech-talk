@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="navbar-fixed">
@@ -31,13 +33,11 @@
                 <ul class="right">
                     <li><a href="{% url 'blog_urls:about' %}" class="btn blue lighten-4 black-text">About Us</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}" class="btn blue lighten-4 black-text">Logout</a></li>
+                        <li><a href="{% url 'logout' %}" class="btn blue lighten-4 black-text">Logout</a></li>
                         <li><a href="{% url 'blog_urls:blog_create' %}" class="btn blue lighten-4 black-text">Add Post</a></li>
                         <li><a href="{% url 'blog_urls:index' %}" class="btn blue lighten-4 black-text">View Posts</a></li>
-
+                        <li><a href="{% url 'blog_urls:explore' %}" class="btn blue lighten-4 black-text">Explore</a></li>
                     {% else %}
-
-                    
                         <li><a href="{% url 'members_urls:register_user' %}"class="btn blue lighten-4 black-text">Register</a></li>
                          <li><a href="{% url 'members_urls:login' %}" class="btn blue lighten-4 black-text">Login</a></li>
                     {% endif %}

@@ -67,3 +67,7 @@ nav {
 .delete_blog_confirm_container {
     margin-top: 100px; 
 }
+
+.hidden {
+    display: none;
+}
