@@ -7,6 +7,8 @@ from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import BlogEntry, Comment
 from .forms import CommentForm
+from django.contrib.auth.decorators import login_required
+
 
 def home(request):
     return render(request, 'home.html')
