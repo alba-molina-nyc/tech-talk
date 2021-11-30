@@ -8,7 +8,8 @@ from django.views.generic.edit import UpdateView, DeleteView
 from .models import BlogEntry, Comment
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
-
+# Import the mixin for class-based views
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home(request):
     return render(request, 'home.html')
